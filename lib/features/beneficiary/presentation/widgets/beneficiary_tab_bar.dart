@@ -22,7 +22,7 @@ class BeneficiaryTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // ------------------------ BENEFICIARIES ------------------------
+        // BENEFICIARIES
         Expanded(
           child: GestureDetector(
             onTap: () => onTabSelected("beneficiaries"),
@@ -30,8 +30,8 @@ class BeneficiaryTabBar extends StatelessWidget {
               height: height,
               decoration: BoxDecoration(
                 color: active == "beneficiaries"
-                    ? const Color(0xFF2F8CFF)   // EXACT BLUE from your screenshot
-                    : const Color(0xFFEEF6FF), // EXACT LIGHT BLUE
+                    ? const Color(0xFF2F8CFF)  
+                    : const Color(0xFFEEF6FF), 
                 borderRadius: BorderRadius.circular(cornerRadius),
               ),
               alignment: Alignment.center,
@@ -39,8 +39,8 @@ class BeneficiaryTabBar extends StatelessWidget {
                 "Beneficiaries ($filteredCount)",
                 style: GoogleFonts.poppins(
                   color: active == "beneficiaries"
-                      ? Colors.white
-                      : const Color(0xFF1F4A85),  // EXACT blue text
+                      ? DefaultColors.white
+                      :  DefaultColors.blue9D,  
                   fontWeight: FontWeight.w600,
                   fontSize: 13,
                 ),
@@ -51,7 +51,7 @@ class BeneficiaryTabBar extends StatelessWidget {
 
         const SizedBox(width: 10),
 
-        // ------------------------ CONTACTS ------------------------
+        // CONTACTS 
         Expanded(
           child: GestureDetector(
             onTap: () => onTabSelected("contacts"),
@@ -59,8 +59,8 @@ class BeneficiaryTabBar extends StatelessWidget {
               height: height,
               decoration: BoxDecoration(
                 color: active == "contacts"
-                    ? const Color(0xFF2F8CFF)
-                    : const Color(0xFFEEF6FF),
+                    ? DefaultColors.blue_300
+                    : DefaultColors.blue_100,
                 borderRadius: BorderRadius.circular(cornerRadius),
               ),
               alignment: Alignment.center,
