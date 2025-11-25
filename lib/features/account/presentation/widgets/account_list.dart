@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:bottom_sheet/core/constants/colors.dart';
 
 import '../../data/account_providers.dart';
 
@@ -13,7 +14,7 @@ class AccountList extends ConsumerWidget {
 
     return ListView.separated(
       itemCount: accounts.length,
-      separatorBuilder: (_, __) => const Divider(height: 1),
+      separatorBuilder: (_, __) => Divider(height: 1, color: DefaultColors.grayE6),
       itemBuilder: (context, i) {
         final a = accounts[i];
         return ListTile(

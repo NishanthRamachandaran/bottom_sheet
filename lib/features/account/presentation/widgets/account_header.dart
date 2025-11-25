@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:bottom_sheet/core/constants/colors.dart';
 
 class AccountHeader extends StatelessWidget {
   final double handleWidth;
@@ -15,7 +16,7 @@ class AccountHeader extends StatelessWidget {
             width: handleWidth,
             height: 4,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: DefaultColors.grayE6,
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -33,7 +34,7 @@ class AccountHeader extends StatelessWidget {
           "Choose the account you'd like to transfer from",
           style: GoogleFonts.poppins(
             fontSize: 13,
-            color: Colors.grey[600],
+            color: DefaultColors.gray82,
             fontWeight: FontWeight.w400,
           ),
         ),
