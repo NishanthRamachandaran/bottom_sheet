@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:bottom_sheet/core/constants/colors.dart';
 
 class BeneficiaryList extends StatelessWidget {
   final List display;
@@ -27,7 +28,7 @@ class BeneficiaryList extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8),
       itemCount: display.length,
       separatorBuilder: (_, __) =>
-          Divider(height: 1, color: Colors.grey.shade300),
+          Divider(height: 1, color: DefaultColors.grayE6),
       itemBuilder: (_, i) {
         final item = display[i];
         final init = initials(item.name);
@@ -45,26 +46,26 @@ class BeneficiaryList extends StatelessWidget {
           // SECOND ALIYA → IMAGE
           leading = CircleAvatar(
             radius: h * 0.025,
-            backgroundColor: Colors.grey.shade200,
+            backgroundColor: DefaultColors.grayE6,
             backgroundImage: const AssetImage("assets/images/sara.png"),
           );
         } else if (init == 'SR' || init == 'YN') {
           leading = CircleAvatar(
             radius: h * 0.025,
-            backgroundColor: const Color(0xFFEAF4FF),
+            backgroundColor: DefaultColors.blueFA,
             child: Text(
               init,
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
-                color: const Color(0xFF1F4A85),
+                color: DefaultColors.blue9D,
               ),
             ),
           );
         } else {
           leading = CircleAvatar(
             radius: h * 0.025,
-            backgroundColor: Colors.grey.shade200,
-            child: Icon(Icons.person, color: Colors.black54, size: iconSize),
+            backgroundColor: DefaultColors.grayE6,
+            child: Icon(Icons.person, color: DefaultColors.black51, size: iconSize),
           );
         }
 
@@ -77,11 +78,11 @@ class BeneficiaryList extends StatelessWidget {
         final titleStyle = GoogleFonts.poppins(
           fontWeight: isUsualAliya ? FontWeight.w600 : FontWeight.w500,
           fontSize: 15,
-          color: isLightAliya ? Colors.grey.shade700 : Colors.grey.shade900,
+          color: isLightAliya ? DefaultColors.gray7D : DefaultColors.black24,
         );
 
         final subtitleStyle =
-            GoogleFonts.poppins(fontSize: 12, color: Colors.grey.shade600);
+            GoogleFonts.poppins(fontSize: 12, color: DefaultColors.gray82);
 
         // ---------------------------
         // TRAILING ONLY FOR FIRST ALIYA
@@ -93,12 +94,12 @@ class BeneficiaryList extends StatelessWidget {
                 children: [
                   Text("Active in",
                       style: GoogleFonts.poppins(
-                          fontSize: 10, color: Colors.grey.shade500)),
+                          fontSize: 10, color: DefaultColors.gray82)),
                   SizedBox(height: h * 0.008),
                   Text("1h 55m",
                       style: GoogleFonts.poppins(
                           fontSize: 12,
-                          color: Colors.grey.shade700,
+                          color: DefaultColors.gray7D,
                           fontWeight: FontWeight.w500)),
                 ],
               )

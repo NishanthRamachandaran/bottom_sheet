@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:bottom_sheet/core/constants/colors.dart';
 
 import '../data/beneficiary_providers.dart';
 import 'widgets/beneficiary_header.dart';
@@ -11,7 +12,7 @@ Future<T?> showBeneficiaryBottomSheet<T>(BuildContext context) {
   return showModalBottomSheet<T>(
     context: context,
     isScrollControlled: true,
-    backgroundColor: Colors.white,
+    backgroundColor: DefaultColors.white,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
@@ -97,13 +98,13 @@ class _BeneficiaryBottomSheetContentState
                     height: h * 0.055,
                     width: h * 0.055,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: DefaultColors.white,
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.grey.shade300),
+                      border: Border.all(color: DefaultColors.grayE6),
                     ),
                     child: IconButton(
                       padding: EdgeInsets.zero,
-                      icon: Icon(Icons.add, color: const Color(0xFF1F4A85), size: iconSize),
+                      icon: Icon(Icons.add, color: DefaultColors.blue9D, size: iconSize),
                       onPressed: () {},
                     ),
                   )
@@ -125,7 +126,7 @@ class _BeneficiaryBottomSheetContentState
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey.shade300),
+                    border: Border.all(color: DefaultColors.grayE6),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: ClipRRect(
@@ -138,7 +139,7 @@ class _BeneficiaryBottomSheetContentState
                               child: Text(
                                 'Contacts placeholder — contacts are handled separately',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(color: Colors.grey.shade600),
+                                style: TextStyle(color: DefaultColors.gray82),
                               ),
                             ),
                           ),

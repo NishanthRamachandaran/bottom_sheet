@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:bottom_sheet/core/constants/colors.dart';
 
 class BeneficiarySearchField extends StatelessWidget {
   final double width;
@@ -14,9 +15,9 @@ class BeneficiarySearchField extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: const Color(0xFFF6F7FB),
+        color: DefaultColors.whiteFA,
         borderRadius: BorderRadius.circular(25),
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: DefaultColors.grayE6),
       ),
       child: Stack(
         alignment: Alignment.center,
@@ -29,7 +30,7 @@ class BeneficiarySearchField extends StatelessWidget {
               border: InputBorder.none,
               hintText: "Type to Search",
               hintStyle: GoogleFonts.poppins(
-                color: Colors.grey.shade500,
+                color: DefaultColors.gray82,
                 fontSize: 13,
               ),
               contentPadding: const EdgeInsets.symmetric(horizontal: 55),
@@ -37,7 +38,7 @@ class BeneficiarySearchField extends StatelessWidget {
           ),
           Positioned(
             left: width * 0.20,
-            child: Icon(Icons.search, size: iconSize, color: Colors.grey.shade600),
+            child: Icon(Icons.search, size: iconSize, color: DefaultColors.gray82),
           ),
         ],
       ),
