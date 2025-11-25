@@ -20,58 +20,66 @@ class BeneficiaryTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      decoration: BoxDecoration(
-        color: DefaultColors.blueLightSteel,
-        borderRadius: BorderRadius.circular(cornerRadius),
-      ),
-      padding: const EdgeInsets.all(4),
-      child: Row(
-        children: [
-          Expanded(
-            child: GestureDetector(
-              onTap: () => onTabSelected("beneficiaries"),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: active == "beneficiaries" ? DefaultColors.blue9D : DefaultColors.transparent,
-                  borderRadius: BorderRadius.circular(26),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  "Beneficiaries ($filteredCount)",
-                  style: GoogleFonts.poppins(
-                    color: active == "beneficiaries" ? DefaultColors.white : DefaultColors.blue9D,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 13,
-                  ),
+    return Row(
+      children: [
+        // BENEFICIARIES 
+        Expanded(
+          child: GestureDetector(
+            onTap: () => onTabSelected("beneficiaries"),
+            child: Container(
+              height: height,
+              decoration: BoxDecoration(
+                color: active == "beneficiaries"
+                    ? DefaultColors.blue9D // selected
+                    : DefaultColors.white, // unselected
+                borderRadius: BorderRadius.circular(cornerRadius),
+                border: Border.all(color: DefaultColors.blue9D),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                "Beneficiaries ($filteredCount)",
+                style: GoogleFonts.poppins(
+                  color: active == "beneficiaries"
+                      ? DefaultColors.white
+                      : DefaultColors.blue9D,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 13,
                 ),
               ),
             ),
           ),
-          const SizedBox(width: 6),
-          Expanded(
-            child: GestureDetector(
-              onTap: () => onTabSelected("contacts"),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: active == "contacts" ? DefaultColors.blue9D : DefaultColors.transparent,
-                  borderRadius: BorderRadius.circular(26),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  "Contacts (3)",
-                  style: GoogleFonts.poppins(
-                    color: active == "contacts" ? DefaultColors.white : DefaultColors.blue9D,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 13,
-                  ),
+        ),
+
+        const SizedBox(width: 10),
+
+        //  CONTACTS 
+        Expanded(
+          child: GestureDetector(
+            onTap: () => onTabSelected("contacts"),
+            child: Container(
+              height: height,
+              decoration: BoxDecoration(
+                color: active == "contacts"
+                    ? DefaultColors.blue9D // selected
+                    : DefaultColors.white, // unselected
+                borderRadius: BorderRadius.circular(cornerRadius),
+                border: Border.all(color: DefaultColors.blue9D),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                "Contacts (3)",
+                style: GoogleFonts.poppins(
+                  color: active == "contacts"
+                      ? DefaultColors.white
+                      : DefaultColors.blue9D,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 13,
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
