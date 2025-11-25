@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'features/account/presentation/account_bottom_sheet.dart';
+import 'features/beneficiary/presentation/beneficiary_bottom_sheet.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -23,9 +23,8 @@ class DemoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Open bottom sheet immediately after first frame
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      showAccountBottomSheet(context);
+      showBeneficiaryBottomSheet(context);
     });
 
     return const Scaffold(
