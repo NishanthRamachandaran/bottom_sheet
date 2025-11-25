@@ -22,7 +22,7 @@ class BeneficiaryTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // BENEFICIARIES 
+        // ------------------------ BENEFICIARIES ------------------------
         Expanded(
           child: GestureDetector(
             onTap: () => onTabSelected("beneficiaries"),
@@ -30,18 +30,17 @@ class BeneficiaryTabBar extends StatelessWidget {
               height: height,
               decoration: BoxDecoration(
                 color: active == "beneficiaries"
-                    ? DefaultColors.blue9D // selected
-                    : DefaultColors.white, // unselected
+                    ? const Color(0xFF2F8CFF)   // EXACT BLUE from your screenshot
+                    : const Color(0xFFEEF6FF), // EXACT LIGHT BLUE
                 borderRadius: BorderRadius.circular(cornerRadius),
-                border: Border.all(color: DefaultColors.blue9D),
               ),
               alignment: Alignment.center,
               child: Text(
                 "Beneficiaries ($filteredCount)",
                 style: GoogleFonts.poppins(
                   color: active == "beneficiaries"
-                      ? DefaultColors.white
-                      : DefaultColors.blue9D,
+                      ? Colors.white
+                      : const Color(0xFF1F4A85),  // EXACT blue text
                   fontWeight: FontWeight.w600,
                   fontSize: 13,
                 ),
@@ -52,7 +51,7 @@ class BeneficiaryTabBar extends StatelessWidget {
 
         const SizedBox(width: 10),
 
-        //  CONTACTS 
+        // ------------------------ CONTACTS ------------------------
         Expanded(
           child: GestureDetector(
             onTap: () => onTabSelected("contacts"),
@@ -60,18 +59,17 @@ class BeneficiaryTabBar extends StatelessWidget {
               height: height,
               decoration: BoxDecoration(
                 color: active == "contacts"
-                    ? DefaultColors.blue9D // selected
-                    : DefaultColors.white, // unselected
+                    ? const Color(0xFF2F8CFF)
+                    : const Color(0xFFEEF6FF),
                 borderRadius: BorderRadius.circular(cornerRadius),
-                border: Border.all(color: DefaultColors.blue9D),
               ),
               alignment: Alignment.center,
               child: Text(
                 "Contacts (3)",
                 style: GoogleFonts.poppins(
                   color: active == "contacts"
-                      ? DefaultColors.white
-                      : DefaultColors.blue9D,
+                      ? Colors.white
+                      : const Color(0xFF1F4A85),
                   fontWeight: FontWeight.w600,
                   fontSize: 13,
                 ),
