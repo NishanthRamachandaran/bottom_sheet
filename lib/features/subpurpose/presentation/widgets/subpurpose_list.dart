@@ -25,7 +25,7 @@ class SubpurposeList extends StatelessWidget {
               s,
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w500,
-                fontSize: 14, // untouched (your rule)
+                fontSize: 14, 
               ),
             ),
           );

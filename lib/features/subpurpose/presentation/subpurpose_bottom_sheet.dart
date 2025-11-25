@@ -90,7 +90,7 @@ class _SubPurposeContentState extends State<_SubPurposeContent> {
 
               SizedBox(height: h * 0.012),
 
-              /// ⭐⭐⭐ THIS WAS MISSING — LIST SECTION ⭐⭐⭐
+             
               Expanded(
                 child: SubpurposeList(items: _subs),
               )
