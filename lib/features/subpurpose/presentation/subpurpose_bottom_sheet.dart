@@ -1,3 +1,4 @@
+import 'package:bottom_sheet/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/subpurpose_header.dart';
@@ -8,7 +9,7 @@ Future<T?> showSubPurposeBottomSheet<T>(BuildContext context) {
   return showModalBottomSheet<T>(
     context: context,
     isScrollControlled: true,
-    backgroundColor: Colors.white,
+    backgroundColor: DefaultColors.white,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
@@ -68,9 +69,9 @@ class _SubPurposeContentState extends State<_SubPurposeContent> {
                 height: searchHeight,
                 width: contentWidth,
                 decoration: BoxDecoration(
-                  color: Colors.grey[100],
+                  color: DefaultColors.whiteF3,
                   borderRadius: BorderRadius.circular(25),
-                  border: Border.all(color: Colors.grey.shade300),
+                  border: Border.all(color: DefaultColors.grayE6),
                 ),
                 child: Stack(
                   alignment: Alignment.center,
@@ -81,7 +82,7 @@ class _SubPurposeContentState extends State<_SubPurposeContent> {
                       child: Icon(
                         Icons.search,
                         size: iconSize,
-                        color: Colors.grey.shade600,
+                        color: DefaultColors.gray82,
                       ),
                     ),
                   ],

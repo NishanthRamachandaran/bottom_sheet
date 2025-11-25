@@ -1,3 +1,4 @@
+import 'package:bottom_sheet/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'features/subpurpose/presentation/subpurpose_bottom_sheet.dart';
@@ -28,7 +29,7 @@ class DemoScreen extends StatelessWidget {
     });
 
     return const Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: DefaultColors.whiteFD,
       body: SizedBox.shrink(),
     );
   }
