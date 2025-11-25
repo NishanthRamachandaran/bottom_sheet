@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:bottom_sheet/core/constants/colors.dart';
 
 class SubpurposeSearchField extends StatelessWidget {
   final Function(String) onSearch;
@@ -9,17 +8,21 @@ class SubpurposeSearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: TextEditingController(),
-      textAlign: TextAlign.center,
       onChanged: onSearch,
-      style: GoogleFonts.poppins(fontSize: 13),
+      textAlign: TextAlign.center,     
+      style: GoogleFonts.poppins(
+        fontSize: 13,
+        color: Colors.black,
+      ),
       decoration: InputDecoration(
         border: InputBorder.none,
         hintText: "Type to Search",
         hintStyle: GoogleFonts.poppins(
-          color: DefaultColors.gray82,
+          color: Colors.grey.shade500,
           fontSize: 13,
         ),
+
+        
         contentPadding: const EdgeInsets.symmetric(horizontal: 55),
       ),
     );

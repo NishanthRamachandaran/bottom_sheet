@@ -1,6 +1,8 @@
 import 'package:bottom_sheet/core/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/subpurpose_providers.dart';
 import 'widgets/subpurpose_header.dart';
 import 'widgets/subpurpose_search_field.dart';
 import 'widgets/subpurpose_list.dart';
@@ -23,18 +25,16 @@ Future<T?> showSubPurposeBottomSheet<T>(BuildContext context) {
   );
 }
 
-class _SubPurposeContent extends StatefulWidget {
+class _SubPurposeContent extends ConsumerStatefulWidget {
   final MediaQueryData mq;
-  // ignore: unused_element_parameter
   const _SubPurposeContent({super.key, required this.mq});
 
   @override
-  State<_SubPurposeContent> createState() => _SubPurposeContentState();
+  ConsumerState<_SubPurposeContent> createState() => _SubPurposeContentState();
 }
 
-class _SubPurposeContentState extends State<_SubPurposeContent> {
+class _SubPurposeContentState extends ConsumerState<_SubPurposeContent> {
   final TextEditingController _ctrl = TextEditingController();
-  final List<String> _subs = List<String>.generate(6, (i) => 'Sub-purpose ${i + 1}');
 
   @override
   void dispose() {
@@ -51,6 +51,9 @@ class _SubPurposeContentState extends State<_SubPurposeContent> {
     final searchHeight = h * 0.065;
     final iconSize = w * 0.045;
 
+    /// LIST FROM PROVIDER (auto updates when searching)
+    final subpurposeList = ref.watch(subpurposeSearchProvider);
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(18, 12, 8, 24),
@@ -59,12 +62,12 @@ class _SubPurposeContentState extends State<_SubPurposeContent> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// Header
+              /// Header drag handle + title
               SubpurposeHeader(handleWidth: w * 0.12),
 
               SizedBox(height: h * 0.018),
 
-              /// Search bar container
+              /// Search container
               Container(
                 height: searchHeight,
                 width: contentWidth,
@@ -76,7 +79,17 @@ class _SubPurposeContentState extends State<_SubPurposeContent> {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    SubpurposeSearchField(onSearch: (v) {}),
+                 
+                    SizedBox(
+                      width: contentWidth,
+                      height: searchHeight,
+                      child: SubpurposeSearchField(
+                        onSearch: (v) {
+                          ref.read(subpurposeSearchProvider.notifier).search(v);
+                        },
+                      ),
+                    ),
+
                     Positioned(
                       left: w * 0.23,
                       child: Icon(
@@ -91,10 +104,10 @@ class _SubPurposeContentState extends State<_SubPurposeContent> {
 
               SizedBox(height: h * 0.012),
 
-             
+              /// LIST OF SUB-PURPOSE ITEMS
               Expanded(
-                child: SubpurposeList(items: _subs),
-              )
+                child: SubpurposeList(items: subpurposeList),
+              ),
             ],
           ),
         ),
