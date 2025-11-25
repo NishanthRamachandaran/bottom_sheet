@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bottom_sheet/core/constants/colors.dart';
 
 class PurposeList extends StatelessWidget {
   final List items;
@@ -8,12 +9,12 @@ class PurposeList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: items.length,
-      separatorBuilder: (_, __) => Divider(height: 1, color: Colors.grey.shade300),
+      separatorBuilder: (_, __) => Divider(height: 1, color: DefaultColors.grayE6),
       itemBuilder: (context, i) {
         final p = items[i];
         return ListTile(
           title: Text(p.title),
-          trailing: Icon(Icons.chevron_right, color: Colors.grey.shade600),
+          trailing: Icon(Icons.chevron_right, color: DefaultColors.gray82),
           onTap: () {},
         );
       },

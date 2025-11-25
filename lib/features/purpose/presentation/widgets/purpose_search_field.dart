@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:bottom_sheet/core/constants/colors.dart';
 
 class PurposeSearchField extends StatelessWidget {
   final Function(String) onSearch;
@@ -15,7 +16,7 @@ class PurposeSearchField extends StatelessWidget {
         border: InputBorder.none,
         hintText: "Type to Search",
         hintStyle: GoogleFonts.poppins(
-          color: Colors.grey.shade500,
+          color: DefaultColors.gray82,
           fontSize: 13,
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 55),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:bottom_sheet/core/constants/colors.dart';
 
 class PurposeHeader extends StatelessWidget {
   final double handleWidth;
@@ -15,7 +16,7 @@ class PurposeHeader extends StatelessWidget {
             width: handleWidth,
             height: 4,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: DefaultColors.grayE6,
               borderRadius: BorderRadius.circular(2),
             ),
           ),

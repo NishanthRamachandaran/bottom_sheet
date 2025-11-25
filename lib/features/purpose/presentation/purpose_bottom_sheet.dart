@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:bottom_sheet/core/constants/colors.dart';
 
 // import '../../subpurpose/presentation/subpurpose_bottom_sheet.dart';
 import '../data/purpose_providers.dart';
@@ -11,7 +12,7 @@ Future<T?> showPurposeBottomSheet<T>(BuildContext context) {
   return showModalBottomSheet<T>(
     context: context,
     isScrollControlled: true,
-    backgroundColor: Colors.white,
+    backgroundColor: DefaultColors.white,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
     ),
@@ -63,9 +64,9 @@ class _PurposeBottomSheetContentState extends ConsumerState<_PurposeBottomSheetC
                 height: searchHeight,
                 width: contentWidth,
                 decoration: BoxDecoration(
-                  color: Colors.grey[100],
+                  color: DefaultColors.whiteF3,
                   borderRadius: BorderRadius.circular(25),
-                  border: Border.all(color: Colors.grey.shade300),
+                  border: Border.all(color: DefaultColors.grayE6),
                 ),
                 child: Stack(
                   alignment: Alignment.center,
@@ -73,7 +74,7 @@ class _PurposeBottomSheetContentState extends ConsumerState<_PurposeBottomSheetC
                     PurposeSearchField(onSearch: (v) => ref.read(purposesSearchProvider.notifier).search(v)),
                     Positioned(
                       left: w * 0.23,
-                      child: Icon(Icons.search, size: iconSize, color: Colors.grey.shade600),
+                      child: Icon(Icons.search, size: iconSize, color: DefaultColors.gray82),
                     ),
                   ],
                 ),
@@ -89,12 +90,12 @@ class _PurposeBottomSheetContentState extends ConsumerState<_PurposeBottomSheetC
                     borderRadius: BorderRadius.circular(8),
                     child: ListView.separated(
                       itemCount: items.length,
-                      separatorBuilder: (_, __) => Divider(height: 1, color: Colors.grey.shade300),
+                      separatorBuilder: (_, __) => Divider(height: 1, color: DefaultColors.grayE6),
                       itemBuilder: (context, i) {
                         final p = items[i];
                         return ListTile(
                           title: Text(p.title),
-                          trailing: Icon(Icons.chevron_right, color: Colors.grey.shade600),
+                          trailing: Icon(Icons.chevron_right, color: DefaultColors.gray82),
                           onTap: () async {
                             if (p.title.toLowerCase().contains('government')) {
                             //  final sub = await showSubPurposeBottomSheet<String>(context);
@@ -110,9 +111,9 @@ class _PurposeBottomSheetContentState extends ConsumerState<_PurposeBottomSheetC
                 ),
               ),
             ],
-          ),
+         
         ),
       ),
-    );
+    ));
   }
 }
