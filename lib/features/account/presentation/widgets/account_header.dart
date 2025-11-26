@@ -21,12 +21,13 @@ class AccountHeader extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 14),
+        const SizedBox(height: 18), // Updated spacing
         Text(
           'Select from account',
           style: GoogleFonts.poppins(
-            fontSize: 18,
             fontWeight: FontWeight.w600,
+            fontSize:22,
+            color: DefaultColors.black,
           ),
         ),
         const SizedBox(height: 6),
@@ -34,8 +35,8 @@ class AccountHeader extends StatelessWidget {
           "Choose the account you'd like to transfer from",
           style: GoogleFonts.poppins(
             fontSize: 13,
-            color: DefaultColors.gray82,
             fontWeight: FontWeight.w400,
+            color: DefaultColors.grayA7, 
           ),
         ),
       ],
