@@ -5,21 +5,18 @@ import 'package:bottom_sheet/core/constants/colors.dart';
 class BeneficiaryList extends StatelessWidget {
   final List display;
   final double iconSize;
-  const BeneficiaryList({super.key, required this.display, required this.iconSize});
 
-  String initials(String name) {
-    final parts = name.trim().split(RegExp(r'\s+'));
-    if (parts.isEmpty) return '';
-    if (parts.length == 1) return parts[0][0].toUpperCase();
-    return (parts[0][0] + parts[1][0]).toUpperCase();
-  }
+  const BeneficiaryList({
+    super.key,
+    required this.display,
+    required this.iconSize,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final mq = MediaQuery.of(context);
-    final h = mq.size.height;
+    final w = MediaQuery.of(context).size.width;
+    final h = MediaQuery.of(context).size.height;
 
-    // First Aliya index (if exists)
     final firstAliyaIndex = display.indexWhere(
       (b) => b.name.trim().toLowerCase() == 'aliya khan',
     );
@@ -31,76 +28,102 @@ class BeneficiaryList extends StatelessWidget {
           Divider(height: 1, color: DefaultColors.grayE6),
       itemBuilder: (_, i) {
         final item = display[i];
-        final init = initials(item.name);
+        final name = item.name.trim();
+        final lower = name.toLowerCase();
 
-        final isAliya = item.name.trim().toLowerCase() == 'aliya khan';
+        final isAliya = lower == 'aliya khan';
         final isFirstAliya = isAliya && i == firstAliyaIndex;
         final isSecondAliya = isAliya && i != firstAliyaIndex;
 
-        // ---------------------------
-        // LEADING (Avatar)
-        // ---------------------------
         Widget leading;
 
-        if (isSecondAliya) {
-          // SECOND ALIYA → IMAGE
+        if (isFirstAliya) {
           leading = CircleAvatar(
-            radius: h * 0.025,
+            radius: h * 0.03,
             backgroundColor: DefaultColors.grayE6,
-            backgroundImage: const AssetImage("assets/images/sara.png"),
-          );
-        } else if (init == 'SR' || init == 'YN') {
-          leading = CircleAvatar(
-            radius: h * 0.025,
-            backgroundColor: DefaultColors.blueFA,
             child: Text(
-              init,
+              "AK",
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
-                color: DefaultColors.blue9D,
+                color: DefaultColors.gray7D,
+                fontSize: w * 0.038,
               ),
             ),
           );
-        } else {
+        } else if (isSecondAliya) {
           leading = CircleAvatar(
-            radius: h * 0.025,
+            radius: h * 0.03,
             backgroundColor: DefaultColors.grayE6,
-            child: Icon(Icons.person, color: DefaultColors.black51, size: iconSize),
+            backgroundImage: const AssetImage('assets/images/sara.png'),
           );
+        } else {
+          final parts = name.split(" ");
+          String init = "";
+          if (parts.length == 1) {
+            init = parts[0][0];
+          } else {
+            init = parts[0][0] + parts[1][0];
+          }
+          init = init.toUpperCase();
+
+          leading = CircleAvatar(
+            radius: h * 0.03,
+            backgroundColor: DefaultColors.grayE6,
+            // child: Icon(
+            //   Icons.person,
+            //   color: DefaultColors.black51,
+            //   size: iconSize,
+            // ),
+          );
+
+          if (init == 'SR' || init == 'YN') {
+            leading = CircleAvatar(
+              radius: h * 0.03,
+              backgroundColor: DefaultColors.blueFA,
+              child: Text(
+                init,
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w600,
+                  color: DefaultColors.blue9D,
+                  fontSize: w * 0.038,
+                ),
+              ),
+            );
+          }
         }
 
-        // ---------------------------
-        // TITLE STYLE
-        // ---------------------------
-        bool isLightAliya = isFirstAliya;
-        bool isUsualAliya = isSecondAliya;
-
         final titleStyle = GoogleFonts.poppins(
-          fontWeight: isUsualAliya ? FontWeight.w600 : FontWeight.w500,
-          fontSize: 15,
-          color: isLightAliya ? DefaultColors.gray7D : DefaultColors.black24,
+          fontWeight: isSecondAliya ? FontWeight.w600 : FontWeight.w600,
+          fontSize: w * 0.04,
+          color: isFirstAliya ? DefaultColors.gray7D : DefaultColors.black,
         );
 
-        final subtitleStyle =
-            GoogleFonts.poppins(fontSize: 12, color: DefaultColors.gray82);
+        final subtitleStyle = GoogleFonts.poppins(
+          fontSize: w * 0.032,
+          color: DefaultColors.gray82,
+        );
 
-        // ---------------------------
-        // TRAILING ONLY FOR FIRST ALIYA
-        // ---------------------------
-        final Widget? trailing = isLightAliya
+        final trailing = isFirstAliya
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("Active in",
-                      style: GoogleFonts.poppins(
-                          fontSize: 10, color: DefaultColors.gray82)),
-                  SizedBox(height: h * 0.008),
-                  Text("1h 55m",
-                      style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          color: DefaultColors.gray7D,
-                          fontWeight: FontWeight.w500)),
+                  Text(
+                    'Active in',
+                    style: GoogleFonts.poppins(
+                      fontSize: w * 0.03,
+                      color: DefaultColors.gray82,
+                    ),
+                  ),
+                  SizedBox(height: h * 0.005),
+                  Text(
+                    '1h 55m',
+                    style: GoogleFonts.poppins(
+                      fontSize: w * 0.033,
+                      color: DefaultColors.gray7D,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ],
               )
             : null;
@@ -111,9 +134,9 @@ class BeneficiaryList extends StatelessWidget {
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: h * 0.005),
+              SizedBox(height: h * 0.006),
               Text("XXXX1827", style: subtitleStyle),
-              SizedBox(height: h * 0.005),
+              SizedBox(height: h * 0.006),
               Text(item.sub, style: subtitleStyle),
             ],
           ),

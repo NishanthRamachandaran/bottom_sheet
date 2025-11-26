@@ -3,17 +3,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:bottom_sheet/core/constants/colors.dart';
 
 class BeneficiarySearchField extends StatelessWidget {
-  final double width;
-  final double height;
   final double iconSize;
-  final Function(String) onSearch;
-  const BeneficiarySearchField({super.key, required this.width, required this.height, required this.iconSize, required this.onSearch});
+  final ValueChanged<String> onSearch;
+
+  const BeneficiarySearchField({
+    super.key,
+    required this.iconSize,
+    required this.onSearch,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
+    final h = MediaQuery.of(context).size.height;
+
     return Container(
-      height: height,
-      width: width,
+      width: w * 0.78,  // Reduced width ✔
+      height: h * 0.055,
       decoration: BoxDecoration(
         color: DefaultColors.whiteFA,
         borderRadius: BorderRadius.circular(25),
@@ -25,20 +31,27 @@ class BeneficiarySearchField extends StatelessWidget {
           TextField(
             onChanged: onSearch,
             textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(fontSize: 13),
+            style: GoogleFonts.poppins(
+              fontSize: w * 0.038,
+              color: DefaultColors.black24,
+            ),
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: "Type to Search",
               hintStyle: GoogleFonts.poppins(
+                fontSize: w * 0.038,
                 color: DefaultColors.gray82,
-                fontSize: 13,
               ),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 55),
+              contentPadding: EdgeInsets.zero,
             ),
           ),
           Positioned(
-            left: width * 0.20,
-            child: Icon(Icons.search, size: iconSize, color: DefaultColors.gray82),
+            left: w * 0.17,
+            child: Icon(
+              Icons.search,
+              size: iconSize,
+              color: DefaultColors.blue9D,
+            ),
           ),
         ],
       ),

@@ -20,58 +20,59 @@ class BeneficiaryTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
+    final h = MediaQuery.of(context).size.height;
+
     return Row(
       children: [
-        // BENEFICIARIES
         Expanded(
           child: GestureDetector(
-            onTap: () => onTabSelected("beneficiaries"),
+            onTap: () => onTabSelected('beneficiaries'),
             child: Container(
-              height: height,
+              padding: EdgeInsets.symmetric(horizontal: w * 0.06),
+              height: h * 0.060, // ↓ Adjusted height
               decoration: BoxDecoration(
-                color: active == "beneficiaries"
-                    ? const Color(0xFF2F8CFF)  
-                    : const Color(0xFFEEF6FF), 
-                borderRadius: BorderRadius.circular(cornerRadius),
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                "Beneficiaries ($filteredCount)",
-                style: GoogleFonts.poppins(
-                  color: active == "beneficiaries"
-                      ? DefaultColors.white
-                      :  DefaultColors.blue9D,  
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                ),
-              ),
-            ),
-          ),
-        ),
-
-        const SizedBox(width: 10),
-
-        // CONTACTS 
-        Expanded(
-          child: GestureDetector(
-            onTap: () => onTabSelected("contacts"),
-            child: Container(
-              height: height,
-              decoration: BoxDecoration(
-                color: active == "contacts"
+                color: active == 'beneficiaries'
                     ? DefaultColors.blue_300
                     : DefaultColors.blue_100,
                 borderRadius: BorderRadius.circular(cornerRadius),
               ),
               alignment: Alignment.center,
               child: Text(
-                "Contacts (3)",
+                'Beneficiaries ($filteredCount)',
                 style: GoogleFonts.poppins(
-                  color: active == "contacts"
-                      ? Colors.white
-                      : const Color(0xFF1F4A85),
+                  color: active == 'beneficiaries'
+                      ? DefaultColors.white
+                      : DefaultColors.blue9D,
                   fontWeight: FontWeight.w600,
-                  fontSize: 13,
+                  fontSize: w * 0.035,
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 11),
+        Expanded(
+          child: GestureDetector(
+            onTap: () => onTabSelected('contacts'),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: w * 0.06),
+              height: h * 0.060, // ↓ Adjusted height
+              decoration: BoxDecoration(
+                color: active == 'contacts'
+                    ? DefaultColors.blue_300
+                    : DefaultColors.blue_100,
+                borderRadius: BorderRadius.circular(cornerRadius),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                'Contacts (3)',
+                style: GoogleFonts.poppins(
+                  color: active == 'contacts'
+                      ? DefaultColors.white
+                      : DefaultColors.blue9D,
+                  fontWeight: FontWeight.w600,
+                  fontSize: w * 0.035,
                 ),
               ),
             ),

@@ -8,6 +8,7 @@ class BeneficiaryHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,12 +22,13 @@ class BeneficiaryHeader extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
         Text(
-          "Select Beneficiary/Contact",
+          'Select Beneficiary/Contact',
           style: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: w * 0.050,
             fontWeight: FontWeight.w600,
+            color: DefaultColors.black24,
           ),
         ),
       ],
