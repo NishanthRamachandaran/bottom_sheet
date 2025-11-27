@@ -8,6 +8,8 @@ class PurposeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,9 +27,9 @@ class PurposeHeader extends StatelessWidget {
         Text(
           'Select Purpose',
           style: GoogleFonts.poppins(
-            fontSize: 25,
-            color: DefaultColors.black,
+            fontSize: w * 0.06, 
             fontWeight: FontWeight.w600,
+            color: DefaultColors.black,
           ),
         ),
       ],

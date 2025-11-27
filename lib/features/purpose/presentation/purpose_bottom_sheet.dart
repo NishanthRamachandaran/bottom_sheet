@@ -56,7 +56,7 @@ class _PurposeBottomSheetContentState
             children: [
               PurposeHeader(handleWidth: w * 0.12),
 
-              SizedBox(height: h * 0.018),
+              SizedBox(height: h * 0.020),
 
               Center(
                 child: PurposeSearchField(
