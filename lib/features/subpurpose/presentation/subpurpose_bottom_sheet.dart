@@ -49,7 +49,7 @@ class _SubPurposeContentState extends ConsumerState<_SubPurposeContent> {
 
     final contentWidth = w * 0.94;
     final searchHeight = h * 0.065;
-    final iconSize = w * 0.045;
+    //final iconSize = w * 0.045;
 
     /// LIST FROM PROVIDER (auto updates when searching)
     final subpurposeList = ref.watch(subpurposeSearchProvider);
@@ -74,7 +74,7 @@ class _SubPurposeContentState extends ConsumerState<_SubPurposeContent> {
                 decoration: BoxDecoration(
                   color: DefaultColors.whiteF3,
                   borderRadius: BorderRadius.circular(25),
-                  border: Border.all(color: DefaultColors.grayE6),
+                  border: Border.all(color: DefaultColors.grayMedBase),
                 ),
                 child: Stack(
                   alignment: Alignment.center,
@@ -90,14 +90,7 @@ class _SubPurposeContentState extends ConsumerState<_SubPurposeContent> {
                       ),
                     ),
 
-                    Positioned(
-                      left: w * 0.23,
-                      child: Icon(
-                        Icons.search,
-                        size: iconSize,
-                        color: DefaultColors.gray82,
-                      ),
-                    ),
+                   
                   ],
                 ),
               ),

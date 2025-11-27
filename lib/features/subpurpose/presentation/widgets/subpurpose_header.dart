@@ -8,6 +8,8 @@ class SubpurposeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,13 +23,29 @@ class SubpurposeHeader extends StatelessWidget {
             ),
           ),
         ),
+
         const SizedBox(height: 14),
-        Text(
-          'Government Payment',
-          style: GoogleFonts.poppins(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
+
+        Row(
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.pop(context), 
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                size: w * 0.045,
+                color: DefaultColors.black,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              'Government Payment',
+              style: GoogleFonts.poppins(
+                fontSize: w * 0.054,
+                fontWeight: FontWeight.w600,
+                color: DefaultColors.black,
+              ),
+            ),
+          ],
         ),
       ],
     );

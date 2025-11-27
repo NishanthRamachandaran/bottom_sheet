@@ -17,6 +17,7 @@ class SubpurposeList extends StatelessWidget {
         return ListTile(
           title: Text(
             items[i].title,
+            
             style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
           ),
         );
