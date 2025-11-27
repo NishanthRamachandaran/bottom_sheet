@@ -9,6 +9,7 @@ class AccountList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final w = MediaQuery.of(context).size.width;
     final accounts = ref.watch(accountsSearchProvider);
 
     return ListView.separated(
@@ -17,34 +18,37 @@ class AccountList extends ConsumerWidget {
           Divider(height: 1, color: DefaultColors.grayE6),
       itemBuilder: (context, i) {
         final a = accounts[i];
+
         return ListTile(
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 3), 
+          contentPadding: const EdgeInsets.symmetric(vertical: 3),
+          
           title: Text(
             a.title,
             style: GoogleFonts.poppins(
-              fontSize: 13,
-              fontWeight: FontWeight.w600, 
+              fontSize: w * 0.038,  // responsive ✔
+              fontWeight: FontWeight.w600,
               color: DefaultColors.black,
             ),
           ),
-          
+
           subtitle: Text(
             a.subtitle,
             style: GoogleFonts.poppins(
-              fontSize: 12,
+              fontSize: w * 0.032, 
               fontWeight: FontWeight.w500,
-              color: DefaultColors.grayA7, 
+              color: DefaultColors.grayA7,
             ),
           ),
+
           trailing: Text(
             a.balance,
             style: GoogleFonts.poppins(
-              fontSize: 14,
+              fontSize: w * 0.040, 
               fontWeight: FontWeight.w500,
               color: DefaultColors.black,
             ),
           ),
+
           onTap: () => Navigator.of(context).pop(a),
         );
       },

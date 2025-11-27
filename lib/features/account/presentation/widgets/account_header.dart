@@ -8,6 +8,8 @@ class AccountHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,12 +23,12 @@ class AccountHeader extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 18), // Updated spacing
+        const SizedBox(height: 18),
         Text(
           'Select from account',
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w600,
-            fontSize:22,
+            fontSize: w * 0.055, 
             color: DefaultColors.black,
           ),
         ),
@@ -34,9 +36,9 @@ class AccountHeader extends StatelessWidget {
         Text(
           "Choose the account you'd like to transfer from",
           style: GoogleFonts.poppins(
-            fontSize: 13,
+            fontSize: w * 0.032, 
             fontWeight: FontWeight.w400,
-            color: DefaultColors.grayA7, 
+            color: DefaultColors.grayA7,
           ),
         ),
       ],
