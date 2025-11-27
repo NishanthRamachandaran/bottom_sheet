@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:bottom_sheet/core/constants/colors.dart';
 
-// import '../../subpurpose/presentation/subpurpose_bottom_sheet.dart';
 import '../data/purpose_providers.dart';
 import 'widgets/purpose_header.dart';
 import 'widgets/purpose_search_field.dart';
-
 
 Future<T?> showPurposeBottomSheet<T>(BuildContext context) {
   return showModalBottomSheet<T>(
@@ -35,18 +34,17 @@ class _PurposeBottomSheetContent extends ConsumerStatefulWidget {
       _PurposeBottomSheetContentState();
 }
 
-class _PurposeBottomSheetContentState extends ConsumerState<_PurposeBottomSheetContent> {
-  // ignore: unused_field
+class _PurposeBottomSheetContentState
+    extends ConsumerState<_PurposeBottomSheetContent> {
   final TextEditingController _ctrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final w = widget.mq.size.width;
     final h = widget.mq.size.height;
+
     final items = ref.watch(purposesSearchProvider);
     final contentWidth = w * 0.94;
-    final searchHeight = h * 0.065;
-    final iconSize = w * 0.045;
 
     return SafeArea(
       child: Padding(
@@ -60,60 +58,51 @@ class _PurposeBottomSheetContentState extends ConsumerState<_PurposeBottomSheetC
 
               SizedBox(height: h * 0.018),
 
-              Container(
-                height: searchHeight,
-                width: contentWidth,
-                decoration: BoxDecoration(
-                  color: DefaultColors.whiteF3,
-                  borderRadius: BorderRadius.circular(25),
-                  border: Border.all(color: DefaultColors.grayE6),
-                ),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    PurposeSearchField(onSearch: (v) => ref.read(purposesSearchProvider.notifier).search(v)),
-                    Positioned(
-                      left: w * 0.23,
-                      child: Icon(Icons.search, size: iconSize, color: DefaultColors.gray82),
-                    ),
-                  ],
+              Center(
+                child: PurposeSearchField(
+                  onSearch: (v) =>
+                      ref.read(purposesSearchProvider.notifier).search(v),
                 ),
               ),
 
-              SizedBox(height: h * 0.012),
+              SizedBox(height: h * 0.015),
+
               Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: ListView.separated(
-                      itemCount: items.length,
-                      separatorBuilder: (_, __) => Divider(height: 1, color: DefaultColors.grayE6),
-                      itemBuilder: (context, i) {
-                        final p = items[i];
-                        return ListTile(
-                          title: Text(p.title),
-                          trailing: Icon(Icons.chevron_right, color: DefaultColors.gray82),
-                          onTap: () async {
-                            if (p.title.toLowerCase().contains('government')) {
-                            //  final sub = await showSubPurposeBottomSheet<String>(context);
-                             // Navigator.of(context).pop(sub ?? p);
-                            } else {
-                              Navigator.of(context).pop(p);
-                            }
-                          },
-                        );
-                      },
-                    ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: ListView.separated(
+                    itemCount: items.length,
+                    separatorBuilder: (_, __) =>
+                        Divider(height: 1, color: DefaultColors.grayE6),
+                    itemBuilder: (context, i) {
+                      final p = items[i];
+
+                      return ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: w * 0.02, 
+                        ),
+                        title: Text(
+                          p.title,
+                          style: GoogleFonts.poppins(
+                            fontSize: w * 0.038, 
+                            fontWeight: FontWeight.w500,
+                            color: DefaultColors.black, 
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.chevron_right,
+                          color: DefaultColors.black,
+                        ),
+                        onTap: () => Navigator.pop(context, p),
+                      );
+                    },
                   ),
                 ),
               ),
             ],
-         
+          ),
         ),
       ),
-    ));
+    );
   }
 }

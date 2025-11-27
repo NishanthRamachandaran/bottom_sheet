@@ -25,7 +25,8 @@ class PurposeHeader extends StatelessWidget {
         Text(
           'Select Purpose',
           style: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: 25,
+            color: DefaultColors.black,
             fontWeight: FontWeight.w600,
           ),
         ),

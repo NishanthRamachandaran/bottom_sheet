@@ -14,7 +14,7 @@ class PurposeList extends StatelessWidget {
         final p = items[i];
         return ListTile(
           title: Text(p.title),
-          trailing: Icon(Icons.chevron_right, color: DefaultColors.gray82),
+          trailing: Icon(Icons.chevron_right, color: DefaultColors.black),
           onTap: () {},
         );
       },
