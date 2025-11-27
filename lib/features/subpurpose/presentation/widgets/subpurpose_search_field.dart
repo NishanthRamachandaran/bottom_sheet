@@ -12,11 +12,11 @@ class SubpurposeSearchField extends StatelessWidget {
     final h = MediaQuery.of(context).size.height;
 
     return Container(
-      width: w * 0.20,  // Full width ✔
-      height: h * 0.05,
+      width: w * 0.16,  // Full width ✔
+      height: h * 0.03,
       decoration: BoxDecoration(
         color: DefaultColors.white,
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(27),
         border: Border.all(color: DefaultColors.grayE6),
       ),
       child: Stack(
@@ -40,7 +40,7 @@ class SubpurposeSearchField extends StatelessWidget {
             ),
           ),
           Positioned(
-                      left: w * 0.25,
+                      left: w * 0.27,
                       child: Icon(
                         Icons.search,
                         size: w * 0.045,
